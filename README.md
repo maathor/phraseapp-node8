@@ -2,7 +2,32 @@
 
 ## Why ?
 
-I use this image to build front (react/js/...) into statics pages page with gitlab runner.
+I use this image to build front (react/js/...) into statics pages page with gitlab runner. (or whatever)
+
+### Sample of my .gitlab-ci
+
+```
+image: maathor/phraseapp-node8
+variables:
+  PHRASEAPP_ID: XXXXXXXXXXXXXXXXXXXXX
+  PHRASEAPP_SECRET: XXXXXXXXXXXXXXXXXXXXXX
+  GOOGLE_API_KEY: XXXXXXXXXXXXXXXXXXXX
+
+stages:
+  - build
+
+build:
+  stage: build
+  script:
+    - npm config set color false
+    - yarn install
+    - NODE_ENV=production npm run deploy:prod
+    - cd dist
+#    - (do your aws cp here to s3)
+  tags:
+    - tools
+
+```
 
 ## What did it contains ?
 
