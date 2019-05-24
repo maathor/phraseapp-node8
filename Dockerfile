@@ -1,7 +1,7 @@
 FROM node:8.16.0-alpine
 
 ENV VERSION 1.13.0
-
+ENV TZ Europe/Paris
 RUN apk add --no-cache python3 && \
     python3 -m ensurepip && \
     rm -r /usr/lib/python*/ensurepip && \
